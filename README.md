@@ -1,12 +1,10 @@
-# Prototype-based Incremental Few-Shot Semantic Segmentation 
-### Fabio Cermelli, Massimiliano Mancini, Yongqin Xian, Zeynep Akata, Barbara Caputo -- BMVC 2021 (Poster) [Link](https://arxiv.org/abs/2012.01415) [Supp](https://github.com/fcdl94/FSS/files/7733989/supp.pdf)
-#### Official PyTorch Implementation
+# Prototype-aware Few-shot Incremental Semantic Segmentation
 
-![teaser](https://raw.githubusercontent.com/fcdl94/FSS/master/images/teaser.png)
+## Abstract
 
-Semantic segmentation models have two fundamental weaknesses: i) they require large training sets with costly pixel-level annotations, and ii) they have a static output space, constrained to the classes of the training set. Toward addressing both problems, we introduce a new task, Incremental Few-Shot Segmentation (iFSS). The goal of iFSS is to extend a pretrained segmentation model with new classes from few annotated images and without access to old training data. To overcome the limitations of existing models iniFSS, we propose Prototype-based Incremental Few-Shot Segmentation (PIFS) that couples prototype learning and knowledge distillation. PIFS exploits prototypes to initialize the classifiers of new classes, fine-tuning the network to refine its features representation. We design a prototype-based distillation loss on the scores of both old and new class prototypes to avoid overfitting and forgetting, and batch-renormalization to cope with non-i.i.d.few-shot data. We create an extensive benchmark for iFSS showing that PIFS outperforms several few-shot and incremental learning methods in all scenarios.
 
-![method](https://raw.githubusercontent.com/fcdl94/FSS/master/images/method.png)
+Few-shot incremental semantic segmentation aims to continuously expand the category space of semantic segmentation models using only a few annotated samples of new classes, while maintaining stable recognition of previously learned classes. This task is constrained by data scarcity, catastrophic forgetting, semantic drift, and background shift. Conventional fixed distillation, single-stage prototype matching, or prediction-level background modeling methods struggle to balance old-class retention, new-class adaptation, and foreground-background discrimination. To address these challenges, this paper proposes a Prototype-aware Few-shot Incremental Semantic Segmentation method (PAFS). First, a few-shot-aware adaptive distillation module is constructed to dynamically adjust the distillation strength according to the stability of class prototypes, thereby reducing the interference of unreliable teacher responses on new-class learning. Second, a prototype-space-guided channel semantic alignment module is designed to map old and new classes into a unified prototype space and semantically modulate channel responses, alleviating cross-stage feature drift. Finally, a semantic-anchor contrastive background compensation mechanism is introduced, which uses old-class prototypes as stable semantic anchors to correct the decision boundary between background and foreground. Experiments under single-step and multi-step few-shot incremental settings on PASCAL VOC and COCO show that PAFS achieves the best or second-best harmonic mean performance in most scenarios.
+
 
 ## How to run
 ### Requirements
