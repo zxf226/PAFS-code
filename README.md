@@ -82,7 +82,6 @@ sh voc-ss.sh
 
 
 ## Qualitative Results
-![qual-voc](https://raw.githubusercontent.com/fcdl94/FSS/master/images/qual_voc2.png)
-![qual-coco](https://raw.githubusercontent.com/fcdl94/FSS/master/images/qual_coco2.png)
+<img src="./figure4.jpg" alt="Qualitative Analysis" style="zoom:80%;" />
 
 
