@@ -33,6 +33,33 @@ For the COCO dataset, we followed the COCO-stuff splits and annotations, that yo
 
 To download dataset, follow the scripts: `data/download_voc.sh`, `data/download_coco.sh` 
 
+> Download PASCAL VOC2012 devkit (train/val data)
+> ``` bash
+> sh download_voc.sh
+> ```
+> - download_voc.sh
+> ```bash
+>cd data_root
+>
+>wget http://host.robots.ox.ac.uk/pascal/VOC/voc2012/VOCtrainval_11-May-2012.tar
+>tar -xf VOCtrainval_11-May-2012.tar
+>wget http://cs.jhu.edu/~cxliu/data/SegmentationClassAug.zip
+>wget http://cs.jhu.edu/~cxliu/data/SegmentationClassAug_Visualization.zip
+>wget http://cs.jhu.edu/~cxliu/data/list.zip
+>rm VOCtrainval_11-May-2012.tar
+>
+>unzip SegmentationClassAug.zip
+>unzip SegmentationClassAug_Visualization.zip
+>unzip list.zip
+>
+>mv SegmentationClassAug ./VOCdevkit/VOC2012/
+>mv SegmentationClassAug_Visualization ./VOCdevkit/VOC2012/
+>mv list ./VOCdevkit/VOC2012/
+>
+>rm list.zip
+>rm SegmentationClassAug_Visualization.zip
+>rm SegmentationClassAug.zip
+> ```
 To use the annotations of COCO-Stuff in our setting, you should preprocess it by running the provided script. \
 Please, remember to change the path in the script before launching it!
 `python data/coco/make_annotation.py`
