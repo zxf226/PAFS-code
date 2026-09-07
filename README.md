@@ -59,54 +59,30 @@ We expect the following tree:
             <Image-ID>.png
 ```
 
-### ImageNet Pretrained Models
-After setting the dataset, you download the models pretrained on ImageNet using [InPlaceABN](https://github.com/mapillary/inplace_abn).
-[Download](https://drive.google.com/file/d/1rQd-NoZuCsGZ7_l_X9GO1GGiXeXHE8CT/view) the ResNet-101 model (we only need it but you can also [download other networks](https://github.com/mapillary/inplace_abn) if you want to change it).
-Then, put the pretrained model in the `pretrained` folder.
+
 
 
 ### Run!
 We provide different scripts to run the experiments (see `run` folder).
 In the following, we describe the basic structure of them.
 
-First, you should run the base step (or step 0).
+
 ```
-exp --method FT --name FT --epochs 30 --lr 0.01 --batch_size 24
+sh coco-ms.sh
 ```
-In this example, we are running the fine-tuning method (FT). For other methods (COS, SPN, DWI, RT) you can change the method name.
-WI and PIFS rely on the COS in the step 0, while FT, AMP, LWF, ILT, MIB rely on the FT one. 
-
-After this, you can run the incremental steps.
-There are a few options: (i) the task, (ii) the number of images (n_shot), and (iii) the sampling split (i_shot).
-
-i) The list of tasks is:
 ```
-voc:
-    5-0, 5-1, 5-2, 5-3
-coco:
-    20-0, 20-1, 20-2, 20-3
+sh coco-ss.sh
 ```
-For multi-step, you can append an `m` after the task (e.g., `5-0m`)
+```
+sh voc-ms.sh
+```
+```
+sh voc-ss.sh
+```
 
-ii) We tested 1, 2, and 5 shot. You can specify it with the `nshot` option.
-
-iii) We used three random sampling. You can specify it with the `ishot` option.
-
-The training will produce both an output on the terminal and it will log on tensorboard at the `logs/<Exp_Name>` folder.
-After the training, it will append a row in the csv file `logs/results/<dataset>/<task>.csv`.
 
 ## Qualitative Results
 ![qual-voc](https://raw.githubusercontent.com/fcdl94/FSS/master/images/qual_voc2.png)
 ![qual-coco](https://raw.githubusercontent.com/fcdl94/FSS/master/images/qual_coco2.png)
 
-## Cite us!
-Please, cite the following article when referring to this code/method.
-```
-@InProceedings{cermelli2020prototype,
-  title={Prototype-based Incremental Few-Shot Semantic Segmentation },
-  author={Cermelli, Fabio and Mancini, Massimiliano and Xian, Yongqin and Akata, Zeynep and Caputo, Barbara},
-  booktitle={Proceedings of the 32nd British Machine Vision Conference},
-  month={November},
-  year={2021}
-}
-```
+
